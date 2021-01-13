@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\ItemRepository;
@@ -68,8 +70,7 @@ class Item
                                 string $description,
                                 int $stock,
                                 float $cost,
-                                bool $discontinued)
-    {
+                                bool $discontinued){
         $this->productCode = $productCode;
         $this->productName = $productName;
         $this->description = $description;

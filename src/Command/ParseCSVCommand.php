@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Command;
 
 
 use App\DTO\ParsedItems;
-use App\Entity\Item;
 use App\Service\ParseCSVService;
 use Exception;
 use Symfony\Component\Console\Command\Command;

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Validator\Constraints;
 
@@ -13,9 +14,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class StockAndPriceGreaterValidator extends ConstraintValidator
 {
-    // mimimum accepted item price
     const ITEM_MIN_PRICE = 5;
-    // minimum accepted item stock
     const ITEM_MIN_STOCK = 10;
 
     public function validate($value, Constraint $constraint)

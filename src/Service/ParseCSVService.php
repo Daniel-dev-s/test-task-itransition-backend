@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Service;
 
@@ -20,14 +21,13 @@ class ParseCSVService
     private EntityManagerInterface $entityManager;
 
     public function __construct(ValidatorInterface $validator,
-                                EntityManagerInterface $entityManager)
-    {
+                                EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager;
         $this->validator = $validator;
     }
 
     // parse csv file from given path
-    public function parse(string $filename)//: ParsedItems
+    public function parse(string $filename): ParsedItems
     {
         $this->parsedItems = new ParsedItems();
         $serializer = new Serializer([], [new CsvEncoder()]);
@@ -37,7 +37,6 @@ class ParseCSVService
         return $this->parsedItems;
     }
 
-    // process csv object
     public function objectProcessing(array $data): void
     {
         foreach ($data as $dataRow) {
@@ -112,8 +111,6 @@ class ParseCSVService
     // returns custom error message if it exists
     public function getCustomErrorMessage(ItemDTO $item): ?string
     {
-        $errors = null;
-        $errors = $this->validator->validate($item);
-        return $errors;
+        return (string)$this->validator->validate($item);
     }
 }

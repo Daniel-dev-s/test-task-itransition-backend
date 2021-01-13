@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DTO;
 
@@ -13,7 +14,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ItemDTO
 {
-    // maximum accepted item price
     const ITEM_MAX_PRICE = 1000;
 
     /**
@@ -58,8 +58,12 @@ class ItemDTO
      * @param float|null $cost
      * @param bool|null $discontinued
      */
-    public function __construct(?string $productCode, ?string $productName, ?string $description, ?int $stock, ?float $cost, ?bool $discontinued)
-    {
+    public function __construct(?string $productCode,
+                                ?string $productName,
+                                ?string $description,
+                                ?int $stock,
+                                ?float $cost,
+                                ?bool $discontinued){
         $this->productCode = $productCode;
         $this->productName = $productName;
         $this->description = $description;
